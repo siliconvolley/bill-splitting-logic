@@ -22,7 +22,7 @@ class Bill():
     def find_individual_shares(self):
         for member in self.members:
             self.item_serial_number = 1                                 # ? Initializing the item serial number from 1
-            print(f"\b{member}: \n")                                    # ? Printing names of each member
+            print(f"\n{member}: \n")                                    # ? Printing names of each member
             for item in self.item_shares:                   
                 if member in self.item_shares[item]: 
                     share_amount = self.items[item] / len(self.item_shares[item])             # ? If the member is present in the list of members for that key item
