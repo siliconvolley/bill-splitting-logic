@@ -1,6 +1,7 @@
 
 class Bill():
-    def __init__(self):
+    def __init__(self, date_created: str):
+        self.date_created = date_created
         self.total_amount = 0
         self.items = {}                                                 # ? Item name : Item Price
         self.members = {}                                               # ? Member name : Member's Share
@@ -35,49 +36,3 @@ class Bill():
     def member_item_count(self):
         for item in self.item_shares:
             print(f"{item} : {len(self.item_shares[item])}")            # ? Displaying the number of members sharing that item
-
-def main():
-    # DEMO USECASE :
-
-    hamburg_bill = Bill()
-
-    members_list = [
-        'Achal',
-        'Rishabh',
-        'Drishya',
-        'Pratsss'
-    ]
-
-    items_list = {
-        'King of Chicken Burger': 139,  
-        'Veg Sandwich': 195,            
-        'Mughalai Chicken Wrap': 75,    
-        'Vanilla Avil Milk': 49,        
-        'Butterscotch Avil Milk': 59,   
-        'Grape Lime Juice': 45          
-    }
-
-    # Adding Food Items
-    for item_name in items_list:
-        hamburg_bill.add_items(item_name, items_list[item_name])
-    # print(f"\nAdded Items: \n{hamburg_bill.items}")           # ! DEBUGGING
-
-    # Adding Members
-    for member in members_list:
-        hamburg_bill.add_members(member)
-    # print(f"\nAdded Members: \n{hamburg_bill.members}")       # ! DEBUGGING
-
-    # Adding Members sharing that Item
-    hamburg_bill.add_members_to_item("King of Chicken Burger", ["Drishya", "Rishabh"])
-    hamburg_bill.add_members_to_item("Veg Sandwich", ["Achal"])
-    hamburg_bill.add_members_to_item("Mughalai Chicken Wrap", ["Rishabh"])
-    hamburg_bill.add_members_to_item("Vanilla Avil Milk", ["Pratsss", "Achal"])
-    hamburg_bill.add_members_to_item("Butterscotch Avil Milk", ["Rishabh", "Achal"])
-    hamburg_bill.add_members_to_item("Grape Lime Juice", ["Drishya"])
-    # print(hamburg_bill.item_shares)                             # ! DEBUGGING
-    
-    # Calculating the Individual Shares
-    hamburg_bill.find_individual_shares()
-
-if __name__ == '__main__':
-    main()
