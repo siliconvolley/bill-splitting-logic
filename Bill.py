@@ -1,11 +1,14 @@
 
 class Bill():
-    def __init__(self, date_created: str):
+    def __init__(self, title: str, date_created: str):
+        self.title = title
         self.date_created = date_created
         self.total_amount = 0
         self.items = {}                                                 # ? Item name : Item Price
         self.members = {}                                               # ? Member name : Member's Share
-        self.item_shares = {}                                           # ? Item name : Member sharing
+        self.item_shares = {}                                               # ? Item name : Member sharing
+
+        self.name = self.title + "_" + self.date_created
 
     def add_members(self, member: str):
         self.members[member] = 0                                        # ? Initially each member's share will be 0

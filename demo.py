@@ -1,11 +1,15 @@
 from Bill import Bill
+from Group import Group
 from datetime import datetime
 
 def main():
     # DEMO USECASE :
-    timestamp = datetime.now()
 
-    hamburg_bill = Bill(timestamp)
+    unformatted_timestamp = datetime.now()
+    timestamp = unformatted_timestamp.strftime("%Y_%m_%d_%H:%M:%S")
+
+    hamburg_bill = Bill("Hamburg", timestamp)
+    pedigree = Group("Pedigree")
 
     members_list = [
         'Achal',
@@ -40,12 +44,16 @@ def main():
     hamburg_bill.add_members_to_item("Vanilla Avil Milk", ["Pratsss", "Achal"])
     hamburg_bill.add_members_to_item("Butterscotch Avil Milk", ["Rishabh", "Achal"])
     hamburg_bill.add_members_to_item("Grape Lime Juice", ["Drishya"])
-    # print(hamburg_bill.item_shares)                             # ! DEBUGGING
+    # print(hamburg_bill.item_shares)                           # ! DEBUGGING
     
-    print("\n",hamburg_bill.date_created)
+    print("\n",hamburg_bill.name)
 
     # Calculating the Individual Shares
     hamburg_bill.find_individual_shares()
+
+    # Adding the bill to the group object
+    pedigree.add_bill(f"{hamburg_bill.name}")
+    # print(pedigree.bills)                                     # ! DEBUGGING
 
 if __name__ == '__main__':
     main()
