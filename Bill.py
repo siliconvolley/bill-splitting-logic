@@ -22,6 +22,10 @@ class Bill():
         for member in members:
             if item in self.item_shares:
                 self.item_shares[item].append(member)                   # ? If the item is present in the item_shares list then append the member who is sharing the item
+    
+    def member_item_count(self):
+        for item in self.item_shares:
+            print(f"{item} : {len(self.item_shares[item])}")            # ? Displaying the number of members sharing that item
 
     def find_individual_shares(self):
         for member in self.members:
@@ -36,6 +40,3 @@ class Bill():
             print("-------------------------------------")
             print(f"TOTAL : {self.members[member]}")                    # ? Displaying the total share of the member
 
-    def member_item_count(self):
-        for item in self.item_shares:
-            print(f"{item} : {len(self.item_shares[item])}")            # ? Displaying the number of members sharing that item
